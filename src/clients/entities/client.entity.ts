@@ -2,6 +2,9 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Exclude } from 'class-transformer';
 
 import { ClientProps } from '@clients/interfaces/clients.interface';
+import { Types } from 'mongoose';
+
+export type ClientDocument = Client & { _id: Types.ObjectId };
 
 @Schema()
 export class Client {

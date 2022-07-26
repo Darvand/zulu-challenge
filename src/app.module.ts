@@ -4,10 +4,11 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { config, configValidationSchema } from './config';
-import { DatabaseModule } from './database/database.module';
 import { enviroments } from './environments';
-import { ClientsModule } from './clients/clients.module';
-import { AuthModule } from './auth/auth.module';
+import { DatabaseModule } from '@database/database.module';
+import { ClientsModule } from '@clients/clients.module';
+import { AuthModule } from '@auth/auth.module';
+import { WalletsModule } from '@wallets/wallets.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
     DatabaseModule,
     ClientsModule,
     AuthModule,
+    WalletsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -21,6 +21,7 @@
       "@shared/*": ["src/shared/*"],
       "@auth/*": ["src/auth/*"],
       "@database/*": ["src/database/*"],
+      "@wallets/*": ["src/wallets/*"],
       "@clients/*": ["src/clients/*"]
     }
   }

@@ -11,11 +11,10 @@ export class AuthService {
 
   async validateUser(email: string, password: string): Promise<any> {
     const clientFound = await this.clientsService.findByEmail(email);
-    console.log('clientFound', clientFound, password);
     const isPasswordValid = await SharedUtils.compare(password, clientFound?.password || '');
     if (clientFound && isPasswordValid) {
       const { password: _, ...result } = new Client(clientFound);
-      return result;
+      return { ...result, id: clientFound._id };
     }
     return null;
   }

@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 
-import { Client } from '@clients/entities/client.entity';
+import { Client, ClientDocument } from '@clients/entities/client.entity';
 import { RegisterClientDTO } from '@clients/dtos/register-client.dto';
 import { ClientsRepository } from '@clients/clients.repository';
 import { ClientAlreadyExistException } from '@clients/exceptions/already-registered.exception';
@@ -26,7 +26,11 @@ export class ClientsService {
     return new Client(savedClient);
   }
 
-  async findByEmail(email: string): Promise<Client> {
+  async findByEmail(email: string): Promise<ClientDocument> {
     return this.repository.findByEmail(email);
+  }
+
+  async findById(id: string): Promise<Client> {
+    return this.repository.findById(id);
   }
 }

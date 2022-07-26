@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
-import { Client } from '@clients/entities/client.entity';
+import { Client, ClientDocument } from '@clients/entities/client.entity';
 
 @Injectable()
 export class ClientsRepository {
@@ -15,8 +15,13 @@ export class ClientsRepository {
     return newClient.save();
   }
 
-  findByEmail(email: string): Promise<Client> {
+  findByEmail(email: string): Promise<ClientDocument> {
     this.logger.log(`Attempting to find a user with email [${email}]`);
     return this.clientModel.findOne({ email }).exec();
+  }
+
+  findById(id: string): Promise<Client> {
+    this.logger.log(`Attempting to find client with id [${id}]`);
+    return this.clientModel.findById(id).exec();
   }
 }
