@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { config, configValidationSchema } from './config';
 import { DatabaseModule } from './database/database.module';
 import { enviroments } from './environments';
+import { ClientsModule } from './clients/clients.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +18,8 @@ import { enviroments } from './environments';
       isGlobal: true,
     }),
     DatabaseModule,
+    ClientsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
