@@ -16,7 +16,7 @@ export class ClientsRepository {
   }
 
   findByEmail(email: string): Promise<Client> {
-    this.logger.log(`Attempting to find a user with email [${email}]]`);
+    this.logger.log(`Attempting to find a user with email [${email}]`);
     return this.clientModel.findOne({ email }).exec();
   }
 }

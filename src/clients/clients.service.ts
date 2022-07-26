@@ -25,4 +25,8 @@ export class ClientsService {
     this.logger.log(`Client successfully registered`);
     return new Client(savedClient);
   }
+
+  async findByEmail(email: string): Promise<Client> {
+    return this.repository.findByEmail(email);
+  }
 }

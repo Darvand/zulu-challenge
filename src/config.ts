@@ -11,6 +11,10 @@ export const config = registerAs('config', () => {
       host: process.env.MONGO_HOST,
       connection: process.env.MONGO_CONNECTION,
     },
+    jwt: {
+      secret: process.env.JWT_SECRET,
+      expiresIn: process.env.JWT_EXPIRES_IN_SECS,
+    },
   };
 });
 
@@ -21,4 +25,6 @@ export const configValidationSchema = Joi.object({
   MONGO_PORT: Joi.number().required(),
   MONGO_HOST: Joi.string().required(),
   MONGO_CONNECTION: Joi.string().required(),
+  JWT_SECRET: Joi.string().required(),
+  JWT_EXPIRES_IN_SECS: Joi.string().default('60s'),
 });
